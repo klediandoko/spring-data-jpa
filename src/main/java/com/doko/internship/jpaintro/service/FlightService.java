@@ -3,20 +3,14 @@ package com.doko.internship.jpaintro.service;
 import com.doko.internship.jpaintro.mapper.FlightMapper;
 import com.doko.internship.jpaintro.model.entity.Flight;
 import com.doko.internship.jpaintro.model.resources.FlightResource;
-import com.doko.internship.jpaintro.model.resources.UserResource;
 import com.doko.internship.jpaintro.repository.FlightRepository;
-import jakarta.transaction.TransactionScoped;
 import jakarta.transaction.Transactional;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class FlightService {

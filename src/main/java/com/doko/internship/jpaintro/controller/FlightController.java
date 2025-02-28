@@ -1,8 +1,6 @@
 package com.doko.internship.jpaintro.controller;
 
-import com.doko.internship.jpaintro.model.entity.Flight;
 import com.doko.internship.jpaintro.model.resources.FlightResource;
-import com.doko.internship.jpaintro.model.resources.UserResource;
 import com.doko.internship.jpaintro.service.FlightService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,6 +1,5 @@
 package com.doko.internship.jpaintro.controller;
 
-import com.doko.internship.jpaintro.model.entity.Booking;
 import com.doko.internship.jpaintro.model.resources.BookingResource;
 import com.doko.internship.jpaintro.service.BookingService;
 import org.springframework.http.ResponseEntity;

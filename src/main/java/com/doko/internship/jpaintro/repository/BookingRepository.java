@@ -1,15 +1,10 @@
 package com.doko.internship.jpaintro.repository;
 
-import com.doko.internship.jpaintro.controller.BookingController;
 import com.doko.internship.jpaintro.model.entity.Booking;
-import org.hibernate.boot.internal.BootstrapContextImpl;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 

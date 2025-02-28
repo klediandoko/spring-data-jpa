@@ -1,6 +1,5 @@
 package com.doko.internship.jpaintro.controller;
 
-import com.doko.internship.jpaintro.model.entity.User;
 import com.doko.internship.jpaintro.model.resources.UserResource;
 import com.doko.internship.jpaintro.service.UserService;
 import org.springframework.http.ResponseEntity;

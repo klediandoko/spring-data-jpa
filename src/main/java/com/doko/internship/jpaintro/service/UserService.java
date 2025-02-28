@@ -1,12 +1,9 @@
 package com.doko.internship.jpaintro.service;
 
 import com.doko.internship.jpaintro.mapper.UserMapper;
-import com.doko.internship.jpaintro.model.entity.Booking;
-import com.doko.internship.jpaintro.model.entity.User;
 import com.doko.internship.jpaintro.model.resources.UserResource;
 import com.doko.internship.jpaintro.repository.UserRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;

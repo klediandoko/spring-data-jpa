@@ -1,7 +1,6 @@
 package com.doko.internship.jpaintro.model.resources;
 
 import com.doko.internship.jpaintro.model.entity.User;
-import com.doko.internship.jpaintro.model.entity.UserDetails;
 
 public class UserResource {
 
