@@ -4,7 +4,6 @@ import com.doko.internship.jpaintro.model.enums.FlightStatus;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,12 +12,11 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
-
 @Table(name = "flights")
 public class Flight {
 
@@ -36,10 +34,10 @@ public class Flight {
     private String flightNumber;
     @Column(name = "departure_date", nullable = false)
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date departureDate;
+    private LocalDateTime departureDate;
     @Column(name = "arrival_date", nullable = false)
     @Temporal(value = TemporalType.TIMESTAMP)
-    private Date arrivalDate;
+    private LocalDateTime arrivalDate;
     @Column(name = "flight_status", nullable = false)
     private FlightStatus flightStatus;
 
@@ -95,23 +93,19 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public Date getDepartureDate() {
-
+    public LocalDateTime getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDate) {
-
+    public void setDepartureDate(LocalDateTime departureDate) {
         this.departureDate = departureDate;
     }
 
-    public Date getArrivalDate() {
-
+    public LocalDateTime getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(Date arrivalDate) {
-
+    public void setArrivalDate(LocalDateTime arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 
@@ -123,6 +117,14 @@ public class Flight {
     public void setFlightStatus(FlightStatus flightStatus) {
 
         this.flightStatus = flightStatus;
+    }
+
+    public Set<BookingFlight> getBookingFlights() {
+        return bookingFlights;
+    }
+
+    public void setBookingFlights(Set<BookingFlight> bookingFlights) {
+        this.bookingFlights = bookingFlights;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.doko.internship.jpaintro.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +17,7 @@ public class BookingFlight {
 
     @ManyToOne
     @JoinColumn(name = "flight_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     private Flight flight;
 
     public Flight getFlight() {
