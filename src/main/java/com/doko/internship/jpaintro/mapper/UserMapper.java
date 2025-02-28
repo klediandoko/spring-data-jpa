@@ -21,6 +21,6 @@ public class UserMapper {
     public void updateUser(final User userToUpdate, final UserResource user) {
         userToUpdate.setUsername(user.getUsername());
         userToUpdate.setRole(user.getRole());
-       // userToUpdate.setUserDetails(user.getUserDetailsResource());
+        //userToUpdate.setUserDetails(user.getUserDetailsResource());
     }
 }

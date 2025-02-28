@@ -44,7 +44,9 @@ public class UserController {
 
     @DeleteMapping(path = "/{userId}", produces = "application/json")
     public ResponseEntity<Void> deleteUser(@PathVariable("userId") final Long userId) {
-        //userService.deleteById(userId);
+        userService.deleteById(userId);
         return ResponseEntity.noContent().build();
     }
+
+
 }

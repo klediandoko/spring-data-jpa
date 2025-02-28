@@ -49,10 +49,10 @@ public class FlightService {
         flightMapper.updateFlight(flightToUpdate, flightResource);
 
         flightRepository.save(flightToUpdate);
-
     }
 
+    @Transactional
     public void deleteFlight(final Long flightId) {
-
+        flightRepository.deleteById(flightId);
     }
 }
