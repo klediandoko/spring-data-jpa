@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @PutMapping(path = "{userId}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Void> updateUser(@PathVariable("userId") final Long userId,
+    public ResponseEntity<Void> save(@PathVariable("userId") final Long userId,
                                            @RequestBody final UserResource user) {
         userService.save(userId, user);
         return ResponseEntity.noContent().build();

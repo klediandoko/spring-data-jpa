@@ -1,9 +1,7 @@
 package com.doko.internship.jpaintro.service;
 
 import com.doko.internship.jpaintro.mapper.UserMapper;
-import com.doko.internship.jpaintro.model.entity.Flight;
 import com.doko.internship.jpaintro.model.entity.User;
-import com.doko.internship.jpaintro.model.resources.FlightResource;
 import com.doko.internship.jpaintro.model.resources.UserResource;
 import com.doko.internship.jpaintro.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -36,15 +34,13 @@ public class UserService {
 
     @Transactional
     public void save(final Long userId, final UserResource userResource) {
-        User userToUpdate = userRepository.findById(userId).orElseGet(User::new);
+        User userToUpdate = userRepository.findById(userId).orElse(new User());
+
         userMapper.updateUser(userToUpdate, userResource);
-
         userRepository.save(userToUpdate);
-
     }
 
-    public List<UserResource> getAllUsersByFlight(Long flightId){
-
+    public List<UserResource> getAllUsersByFlight(Long flightId) {
         return userRepository.findAllUsersByFlightId(flightId).stream()
                 .map(userMapper::toResource).toList();
     }

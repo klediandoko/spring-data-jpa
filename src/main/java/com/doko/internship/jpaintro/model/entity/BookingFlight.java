@@ -20,6 +20,16 @@ public class BookingFlight {
     @JsonIgnore
     private Flight flight;
 
+
+    public BookingFlight(Booking booking, Flight flight) {
+        this.booking = booking;
+        this.flight = flight;
+    }
+
+    public BookingFlight() {
+
+    }
+
     public Flight getFlight() {
 
         return flight;
