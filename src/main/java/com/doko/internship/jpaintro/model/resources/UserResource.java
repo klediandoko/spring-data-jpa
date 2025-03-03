@@ -6,16 +6,20 @@ public class UserResource {
 
     private String username;
     private String role;
+    private String password;
     private UserDetailsResource userDetailsResource;
 
     public UserResource() {
     }
 
-    public UserResource(User user){
+    public UserResource(User user) {
         this.username = user.getUsername();
         this.role = user.getRole();
+        this.password = user.getPassword();
     }
 
+    public UserResource(UserDetailsResource resource) {
+    }
 
 
     public String getUsername() {
@@ -32,6 +36,14 @@ public class UserResource {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public UserDetailsResource getUserDetailsResource() {

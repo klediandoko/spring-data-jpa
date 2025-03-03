@@ -4,6 +4,7 @@ import com.doko.internship.jpaintro.model.resources.FlightResource;
 import com.doko.internship.jpaintro.service.FlightService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -53,6 +54,12 @@ public class FlightController {
         return ResponseEntity.noContent().build();
     }
 
+
+    @DeleteMapping("/{flightId}")
+    public ResponseEntity<Void> deleteFlight(@PathVariable("flightId") final Long flightId) {
+        flightService.deleteFlight(flightId);
+        return ResponseEntity.noContent().build();
+    }
 
 }
 

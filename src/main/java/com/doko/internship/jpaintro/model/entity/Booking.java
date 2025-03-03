@@ -15,6 +15,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -40,7 +41,7 @@ public class Booking {
 
 
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<BookingFlight> bookingFlights;
+    private Set<BookingFlight> bookingFlights = new HashSet<>();
 
     public void setUser(User user) {
         this.user = user;
@@ -76,6 +77,10 @@ public class Booking {
 
     public void setBookingStatus(BookingStatus bookingStatus) {
         this.bookingStatus = bookingStatus;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     @Override

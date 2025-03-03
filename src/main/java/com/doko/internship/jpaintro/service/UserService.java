@@ -1,8 +1,10 @@
 package com.doko.internship.jpaintro.service;
 
 import com.doko.internship.jpaintro.mapper.UserMapper;
+import com.doko.internship.jpaintro.model.entity.User;
 import com.doko.internship.jpaintro.model.resources.UserResource;
 import com.doko.internship.jpaintro.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,17 +32,22 @@ public class UserService {
                 .map(userMapper::toResource);
     }
 
+    @Transactional
     public void save(final Long userId, final UserResource userResource) {
-        userRepository.findById(userId).ifPresent(user -> {
-            userMapper.updateUser(user, userResource);
-            userRepository.save(user);
-        });
+        User userToUpdate = userRepository.findById(userId).orElse(new User());
+
+        userMapper.updateUser(userToUpdate, userResource);
+        userRepository.save(userToUpdate);
     }
 
-    public List<UserResource> getAllUsersByFlight(Long flightId){
-
+    public List<UserResource> getAllUsersByFlight(Long flightId) {
         return userRepository.findAllUsersByFlightId(flightId).stream()
                 .map(userMapper::toResource).toList();
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
     }
 
 }

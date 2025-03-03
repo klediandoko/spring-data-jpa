@@ -2,8 +2,13 @@ package com.doko.internship.jpaintro.service;
 
 import com.doko.internship.jpaintro.mapper.BookingMapper;
 import com.doko.internship.jpaintro.model.entity.Booking;
+import com.doko.internship.jpaintro.model.entity.BookingFlight;
+import com.doko.internship.jpaintro.model.entity.Flight;
 import com.doko.internship.jpaintro.model.resources.BookingResource;
 import com.doko.internship.jpaintro.repository.BookingRepository;
+import com.doko.internship.jpaintro.repository.FlightRepository;
+import com.doko.internship.jpaintro.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -16,11 +21,16 @@ public class BookingService {
 
     private final BookingRepository bookingRepository;
     private final BookingMapper bookingMapper;
+    private final UserRepository userRepository;
+    private final FlightRepository flightRepository;
 
-    public BookingService(BookingRepository bookingRepository, BookingMapper bookingMapper) {
+    public BookingService(BookingRepository bookingRepository, BookingMapper bookingMapper, UserRepository userRepository, FlightRepository flightRepository) {
         this.bookingRepository = bookingRepository;
         this.bookingMapper = bookingMapper;
+        this.userRepository = userRepository;
+        this.flightRepository = flightRepository;
     }
+
 
     public List<BookingResource> findBookingsByUserId(Long id) {
         return bookingRepository.findByUserId(id).stream().map(bookingMapper::toResource).toList();
@@ -50,9 +60,20 @@ public class BookingService {
         return bookings;
     }
 
+    @Transactional
+    public void saveBooking(BookingResource bookingResource, Long userId, Long flightId) {
+        Booking booking = bookingRepository.findById(bookingResource.getBookingId()).orElse(new Booking());
 
-    public void saveBookingByUser(Booking booking, Long userId) {
+        if (booking.getBookingId() == null) {
+            booking.setUser(userRepository.getReferenceById(userId));
+        }
+        bookingMapper.updateBooking(booking, bookingResource);
 
+        Flight flight = flightRepository.getReferenceById(flightId);
+        BookingFlight bookingFlight = new BookingFlight(booking, flight);
+        booking.getBookingFlights().add(bookingFlight);
+
+        bookingRepository.save(booking);
     }
 
 }
